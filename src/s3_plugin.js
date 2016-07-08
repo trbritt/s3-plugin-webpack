@@ -123,6 +123,10 @@ module.exports = class S3Plugin {
 
   handleErrors(error, compilation, cb) {
     compileError(compilation, `S3Plugin: ${error}`)
+    if (compilation.errors.length > 0) {
+      console.log(compilation.errors)
+      process.exit(1)
+    }
     cb()
   }
 
